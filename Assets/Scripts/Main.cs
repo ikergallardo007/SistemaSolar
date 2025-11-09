@@ -4,6 +4,9 @@ using UnityEngine;
 public class Main : MonoBehaviour
 {
     // Public Properties
+    public float sunRotationSpeed;
+    public float earthRotationSpeed;
+    public float moonRotationSpeed;
     public Transform sunTransform;
     public Transform earthTransform;
     public Transform moonTransform;
@@ -20,6 +23,8 @@ public class Main : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        sunTransform.Rotate(Vector3.up, sunRotationSpeed *  Time.deltaTime);
+        earthTransform.Rotate(Vector3.up, earthRotationSpeed * Time.deltaTime);
+        moonTransform.Rotate(Vector3.up, moonRotationSpeed * Time.deltaTime);
     }
 }
