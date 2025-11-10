@@ -12,8 +12,6 @@ public class Main : MonoBehaviour
     public Transform moonTransform;
 
     // Private Attributes
-    private Vector3 earthDirectionVector;
-    private Vector3 moonDirectionVector;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,24 +27,22 @@ public class Main : MonoBehaviour
         earthTransform.Rotate(Vector3.up, earthRotationSpeed * Time.deltaTime);
         moonTransform.Rotate(Vector3.up, moonRotationSpeed * Time.deltaTime);
 
-        // Direction vectors.
-        //earthDirectionVector = earthTransform.forward * (-1);
-
         // Rays of the sun.
-        Debug.DrawRay(sunTransform.position, sunTransform.right, Color.red); 
-        Debug.DrawRay(sunTransform.position, sunTransform.up, Color.green);
-        Debug.DrawRay(sunTransform.position, sunTransform.forward, Color.blue);
+        Debug.DrawRay(sunTransform.position, sunTransform.right, Color.red); // Local X axis
+        Debug.DrawRay(sunTransform.position, sunTransform.up, Color.green); // Local Y axis
+        Debug.DrawRay(sunTransform.position, sunTransform.forward, Color.blue); // Local Z axis
+        // The sun is only rotating, so it has no movement vector.
 
         // Rays of the earth.
-        Debug.DrawRay(earthTransform.position, earthTransform.right, Color.red);
-        Debug.DrawRay(earthTransform.position, earthTransform.up, Color.green);
-        Debug.DrawRay(earthTransform.position, earthTransform.forward, Color.blue);
-        Debug.DrawRay(earthTransform.position, sunTransform.forward * (-1));
+        Debug.DrawRay(earthTransform.position, earthTransform.right, Color.red); // Local X axis
+        Debug.DrawRay(earthTransform.position, earthTransform.up, Color.green); // Local Y axis
+        Debug.DrawRay(earthTransform.position, earthTransform.forward, Color.blue); // Local Z axis
+        Debug.DrawRay(earthTransform.position, sunTransform.forward * (-1)); // Movement vector
 
         // Rays of the moon.
-        Debug.DrawRay(moonTransform.position, moonTransform.right, Color.red);
-        Debug.DrawRay(moonTransform.position, moonTransform.up, Color.green);
-        Debug.DrawRay(moonTransform.position, moonTransform.forward, Color.blue);
-        Debug.DrawRay(moonTransform.position, earthTransform.forward * (-1));
+        Debug.DrawRay(moonTransform.position, moonTransform.right, Color.red); // Local X axis
+        Debug.DrawRay(moonTransform.position, moonTransform.up, Color.green); // Local Y axis
+        Debug.DrawRay(moonTransform.position, moonTransform.forward, Color.blue); // Local Z axis
+        Debug.DrawRay(moonTransform.position, earthTransform.forward * (-1)); // Movement vector
     }
 }
